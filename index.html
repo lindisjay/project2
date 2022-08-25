@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+    <title>My Form</title>
+  </head>
+  <body>
+    <h2>Biodata Mahasiswa</h2>
+    <div class="container">
+      <form action="index.html" method="POST" class="form" onSubmit="value()" name="form-biodata-mhs">
+          
+        <div class="row">
+          <div class="col-25">
+            <label for="nim">NIM</label>
+          </div>
+          <div>
+            <input type="text" name="nim" id="nim" placeholder="NIM Anda .." />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+            <label for="nama">Nama Panjang</label>
+          </div>
+          <div>
+            <input type="text" name="nama" id="nama" placeholder="Nama Anda.." />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+            <label for="born">Tempat Lahir</label>
+          </div>
+          <div>
+            <input type="text" name="born" id="born" placeholder="Tempat Lahir Anda.." />
+          </div>
+        </div>
+        <br />
+
+        <div class="row">
+          <div class="col-25">
+            <label for="sex">Jenis Kelamin</label>
+          </div>
+          <div>
+            <input type="radio" name="lk" id="lk" value="Laki-Laki" />Laki-Laki<br />
+            <input type="radio" name="pr" id="pr" value="Perempuan" />Perempuan
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+            <label for="Job">Pekerjaan</label>
+          </div>
+          <div>
+            <select name="kerja" id="kerja">
+              <option value="">--Pilih Pekerjaan--</option>
+              <option value="Karyawan">Karyawan</option>
+              <option value="Mahasiswa">Mahasiswa</option>
+              <option value="Wirausaha">Wirausaha</option>
+              <option value="Lainya">Lainnya</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+            <label for="hobby">Hobby</label>
+          </div>
+          <div>
+            <input type="checkbox" name="hobi1" value="Membaca" />Membaca <br />
+            <input type="checkbox" name="hobi2" value="Olahraga" />Olahraga <br />
+            <input type="checkbox" name="hobi3" value="Lainnya" /> Lainnya <br />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-25">
+            <label for="address">Alamat</label>
+          </div>
+          <div class="col-75">
+            <textarea name="alamat" id="address" placeholder="Alamat Anda saat ini.."></textarea>
+          </div>
+        </div>
+
+        <div class="row">
+          <input type="submit" value="Submit" />
+        </div>
+      </form>
+    </div>
+
+    <script rel="script" src="script.js"></script>
+    <script>
+        const scriptURL = '<https://script.google.com/macros/s/AKfycbypYBiDbCo0np1hIppTS9d6i-l_V8Rdza_azM1-cvoZX_PgF4XENjC2a046pun9-qu_yA/exec>'
+        const form = document.forms['form-biodata-mhs']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+  </body>
+</html>
